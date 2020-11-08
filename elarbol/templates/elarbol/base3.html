@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Django Social</title>
+
+
+
+		<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+		<style>
+			body{
+			background: #19EE0B;
+			font-size: 62.5%;
+
+			}
+		</style>
+
+
+
+
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http//:fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../../static/normalize.css">
+	<link rel="stylesheet" type="text/css" href="../../static/style.css">
+
+	<style>
+			body{
+			background: #19EE0B;
+			font-size: 62.5%;
+
+			}
+	</style>
+
+</head>
+<body>
+
+	<header class="main-head">
+		<nav class="main">
+			<h1 id="logo">Bienvenid@!</h1>
+			<ul>
+				<li><a href="/elarbol/inicio">Inicio</a></li>
+				<li><a href="/elarbol/tienda">Tienda</a></li>
+				{% if request.user.is_authenticated %}
+				<li><a href="/elarbol/logout">Salir</a></li>
+				{%else%}
+				<li><a href="/elarbol/registro">Registrarse</a></li>
+				<li><a href="/elarbol/login">Entrar</a></li>
+				{% endif %}
+
+
+			</ul>
+		</nav>
+	</header>
+
+	{% if messages %}
+		{% for message in messages %}
+			<div class="notification {{ message.tags}}">
+			{{ message }}
+			</div>
+
+		{% endfor %}
+	{% endif %}
+
+	<!-------------------------------------
+					Navigation Bar
+	-------------------------------------->
+
+
+		{% block content %}
+
+		{% endblock content %}
+
+
+
+
+
+	<footer>
+		<div class="row">
+			<img src="{% static 'logoElArbol.png'%}">
+			<p>Distribuyendo frutos secos desde el 2020.<br> Contactenos en:<br></p>
+			<img src="{% static 'facebook.png'%}"><img src="{% static 'twitter.png'%}">
+			<img src="{% static 'instagram.png'%}">
+		</div>
+
+	</footer>
+
+
+
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+</html>

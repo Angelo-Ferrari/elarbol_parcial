@@ -1,0 +1,113 @@
+{% extends 'elarbol/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+
+
+
+<style>
+  .precio{
+    margin: auto;
+    color: green;
+    }
+
+    a{
+     margin: 13px 12px 12px 10px;
+    }
+
+</style>
+
+
+<table>
+{% for p in productos %}
+
+
+
+    <tr>
+
+
+        <article>
+
+
+
+
+
+            <div class="container-article">
+
+
+                {% if p.foto_producto %}
+                <img src="{{ p.foto_producto.url }}">
+                {% else %}
+                <img src="{% static '/noimage.jpg' %}">
+                {% endif %}
+                <div>
+
+                    <h2 class="username">{{ p.nombre_producto }}</h2>
+                    <br>
+                    <div class="precio">${{ p.precio }}</div>
+                    <br>
+                    <div>stock actual:</div><div class="precio">{{ p.stock }}</div>
+                    <br>
+                    <div class="post">{{ p.descripcion }}</div>
+                    <br>
+
+                    <br><br><br>
+
+                    {% if request.user.is_authenticated %}
+
+
+
+
+		                {% if perms.elarbol.change_producto %}
+			                <a href="/elarbol/editar/{{ p.id }}">Editar</a>
+
+		                {% endif %}
+		                {% if perms.elarbol.delete_producto %}
+			                <a href="{% url 'eliminar' p.id %}" onclick="confirmarEliminacion({{ p.id }})">Eliminar</a>
+
+		                {% endif %}
+
+
+                    {% endif %}
+                    <a href="#">Agregar al carrito</a>
+
+
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </tr>
+
+</table>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

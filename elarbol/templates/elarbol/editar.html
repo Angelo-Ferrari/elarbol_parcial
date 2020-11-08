@@ -1,0 +1,22 @@
+{% extends 'elarbol/base2.html' %}
+{% load static %}
+
+
+
+
+
+
+{% block content %}
+
+<form method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button type="submit">Editar</button>
+</form>
+
+
+
+
+
+
+{% endblock %}

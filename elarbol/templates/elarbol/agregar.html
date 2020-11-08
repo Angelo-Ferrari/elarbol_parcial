@@ -1,0 +1,33 @@
+{% extends 'elarbol/base2.html' %}
+{% load static %}
+
+
+
+
+
+
+{% block content %}
+
+<h1>{{ mensaje }}</h1>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+    {{ form }}
+
+
+    <button type="reset" value="Limpiar">Limpiar</button>
+    <button type="submit" value="Guardar">Guardar</button>
+
+
+
+</form>
+
+
+
+
+
+
+{% endblock %}
+
